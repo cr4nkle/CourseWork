@@ -10,6 +10,7 @@ namespace CourseWork
     class Emitter
     {
         List<Particle> particles = new List<Particle>();
+        public List<Point> gravityPoints = new List<Point>();
 
         public int MousePositionX = 0;
         public int MousePositionY = 0;
@@ -65,6 +66,17 @@ namespace CourseWork
             foreach (var particle in particles)
             {
                 particle.Draw(g);
+            }
+
+            foreach (var point in gravityPoints)
+            {
+                g.FillEllipse(
+                    new SolidBrush(Color.DarkGreen),
+                    point.X - 5,
+                    point.Y - 5,
+                    10,
+                    10
+                );
             }
         }
     }
