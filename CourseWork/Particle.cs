@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace CourseWork
 {
@@ -22,6 +23,13 @@ namespace CourseWork
             Direction = rand.Next(360);
             Speed = 1 + rand.Next(10);
             
+        }
+
+        public void Draw(Graphics g)
+        {
+            var brush = new SolidBrush(Color.Black);
+            g.FillEllipse(brush, X - Radius, Y - Radius, Radius * 2, Radius * 2);
+            brush.Dispose();
         }
     }
 }
