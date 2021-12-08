@@ -27,7 +27,6 @@ namespace CourseWork
                 
                 particles.Add(particle);
             }
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -39,9 +38,19 @@ namespace CourseWork
         {
             foreach (var particle in particles)
             {
-                var directionInRadians = particle.Direction / 180 * Math.PI;
-                particle.X += (float)(particle.Speed * Math.Cos(directionInRadians));
-                particle.Y -= (float)(particle.Speed * Math.Sin(directionInRadians));
+                particle.Life--;
+                if(particle.Life < 0)
+                {
+                    particle.Life = 20 + Particle.rand.Next(100);
+                    particle.X = picDisplay.Image.Width / 2;
+                    particle.Y = picDisplay.Image.Height / 2;
+                }
+                else
+                {
+                    var directionInRadians = particle.Direction / 180 * Math.PI;
+                    particle.X += (float)(particle.Speed * Math.Cos(directionInRadians));
+                    particle.Y -= (float)(particle.Speed * Math.Sin(directionInRadians));
+                }                
             }
         }
 
