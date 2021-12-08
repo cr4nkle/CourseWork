@@ -29,8 +29,12 @@ namespace CourseWork
 
         public void Draw(Graphics g)
         {
-            var brush = new SolidBrush(Color.OrangeRed);
+            float k = Math.Min(1f, Life / 50);
+            int alpha = (int)(k * 255); 
+            var color = Color.FromArgb(alpha, Color.OrangeRed);
+            var brush = new SolidBrush(color);
             g.FillEllipse(brush, X - Radius, Y - Radius, Radius * 2, Radius * 2);
+
             brush.Dispose();
         }
     }

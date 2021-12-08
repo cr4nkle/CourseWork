@@ -76,5 +76,10 @@ namespace CourseWork
 
             picDisplay.Invalidate();
         }
+
+        private void pickDisplay_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
