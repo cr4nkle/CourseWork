@@ -20,16 +20,7 @@ namespace CourseWork
         public Form1()
         {
             InitializeComponent();
-            picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
-
-            for (var i = 0; i < 500; ++i)
-            {
-                var particle = new Particle();
-                particle.X = picDisplay.Image.Width / 2;
-                particle.Y = picDisplay.Image.Height / 2;
-                
-                particles.Add(particle);
-            }
+            picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -58,6 +49,21 @@ namespace CourseWork
                     particle.Y -= (float)(particle.Speed * Math.Sin(directionInRadians));
                 }                
             }
+
+            for (var i = 0; i < 10; ++i)
+            {
+                if(particles.Count < 500)
+                {
+                    var particle = new Particle();
+                    particle.X = MousePositionX;
+                    particle.Y = MousePositionY;
+                    particles.Add(particle);
+                }
+                else
+                {
+                    break;
+                }      
+            }
         }
 
         private void Render(Graphics g)
@@ -73,7 +79,7 @@ namespace CourseWork
             UpdateState();
             using (var g = Graphics.FromImage(picDisplay.Image))
             {
-                g.Clear(Color.White);
+                g.Clear(Color.LightBlue);
                 Render(g);
             }
 
