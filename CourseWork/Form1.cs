@@ -12,13 +12,19 @@ namespace CourseWork
 {
     public partial class Form1 : Form
     {
-        Emitter emitter = new Emitter();
+        Emitter emitter;
 
         public Form1()
         {
             InitializeComponent();
 
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
+
+            emitter = new TopEmitter
+            {
+                Width = picDisplay.Width,
+                GravitationY = 0.25f
+            };
 
             emitter.impactPoints.Add(new GravityPoint
             {
