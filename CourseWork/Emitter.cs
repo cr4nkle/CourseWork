@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CourseWork
 {
-    class Emitter
+    public class Emitter
     {
         List<Particle> particles = new List<Particle>();
         public List<ImpactPoint> impactPoints = new List<ImpactPoint>();
@@ -87,6 +87,22 @@ namespace CourseWork
             particle.SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed);
 
             particle.Radius = 2 + Particle.rand.Next(10);
+        }
+    }
+
+    public class TopEmitter : Emitter
+    {
+        public int Width; 
+
+        public override void ResetParticle(Particle particle)
+        {
+            base.ResetParticle(particle); 
+
+            particle.X = Particle.rand.Next(Width); 
+            particle.Y = 0;   
+
+            particle.SpeedY = 1; 
+            particle.SpeedX = Particle.rand.Next(-2, 2); 
         }
     }
 }
