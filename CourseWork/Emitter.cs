@@ -15,7 +15,7 @@ namespace CourseWork
         public int MousePositionX = 0;
         public int MousePositionY = 0;
         public float GravitationX = 0;
-        public float GravitationY = 1;
+        public float GravitationY = 0;
 
         public void UpdateState()
         {
@@ -24,18 +24,7 @@ namespace CourseWork
                 particle.Life--;
                 if (particle.Life < 0)
                 {
-                    var direction = (double)Particle.rand.Next(360);
-                    var speed = 1 + Particle.rand.Next(10);
-
-                    particle.Life = 20 + Particle.rand.Next(100);
-
-                    particle.X = MousePositionX;
-                    particle.Y = MousePositionY;
-
-                    particle.SpeedX = (float)(Math.Cos(direction / 180 * Math.PI) * speed);
-                    particle.SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed);
-
-                    particle.Radius = 2 + Particle.rand.Next(10);
+                    ResetParticle(particle);
                 }
                 else
                 {
@@ -61,8 +50,7 @@ namespace CourseWork
                     particle.FromColor = Color.Yellow;
                     particle.ToColor = Color.FromArgb(0, Color.Magenta);
 
-                    particle.X = MousePositionX;
-                    particle.Y = MousePositionY;
+                    ResetParticle(particle);
 
                     particles.Add(particle);
                 }
@@ -84,6 +72,21 @@ namespace CourseWork
             {
                 point.Render(g);
             }
+        }
+
+        public virtual void ResetParticle(Particle particle)
+        {
+            particle.Life = 20 + Particle.rand.Next(100);
+            particle.X = MousePositionX;
+            particle.Y = MousePositionY;
+
+            var direction = (double)Particle.rand.Next(360);
+            var speed = 1 + Particle.rand.Next(10);
+
+            particle.SpeedX = (float)(Math.Cos(direction / 180 * Math.PI) * speed);
+            particle.SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed);
+
+            particle.Radius = 2 + Particle.rand.Next(10);
         }
     }
 }
