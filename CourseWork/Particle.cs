@@ -13,5 +13,15 @@ namespace CourseWork
         public float Y; 
         public float Direction; 
         public float Speed;
+
+        public static Random rand = new Random();
+
+        public Particle()
+        {
+            Radius = 2 + rand.Next(10);
+            Direction = rand.Next(360);
+            Speed = 1 + rand.Next(10);
+            
+        }
     }
 }
