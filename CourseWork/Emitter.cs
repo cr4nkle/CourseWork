@@ -10,7 +10,7 @@ namespace CourseWork
     class Emitter
     {
         List<Particle> particles = new List<Particle>();
-        public List<Point> gravityPoints = new List<Point>();
+        public List<ImpactPoint> impactPoints = new List<ImpactPoint>();
 
         public int MousePositionX = 0;
         public int MousePositionY = 0;
@@ -39,14 +39,11 @@ namespace CourseWork
                 }
                 else
                 {
-                    float gX = gravityPoints[0].X - particle.X;
-                    float gY = gravityPoints[0].Y - particle.Y;
-                    float r2 = gX * gX + gY * gY;
-                    float M = 100;
-
-                    particle.SpeedX += (gX) * M / r2;
-                    particle.SpeedY += (gY) * M / r2;
-
+                    foreach (var point in impactPoints)
+                    {
+                        point.ImpactParticle(particle);
+                    }
+                    
                     particle.SpeedX += GravitationX;
                     particle.SpeedY += GravitationY;
 
@@ -81,7 +78,12 @@ namespace CourseWork
             foreach (var particle in particles)
             {
                 particle.Draw(g);
-            }            
+            }
+
+            foreach (var point in impactPoints)
+            {
+                point.Render(g);
+            }
         }
     }
 }
