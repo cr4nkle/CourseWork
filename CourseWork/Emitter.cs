@@ -13,6 +13,8 @@ namespace CourseWork
 
         public int MousePositionX = 0;
         public int MousePositionY = 0;
+        public float GravitationX = 0;
+        public float GravitationY = 1;
 
         public void UpdateState()
         {
@@ -33,6 +35,8 @@ namespace CourseWork
                 }
                 else
                 {
+                    particle.SpeedX += GravitationX;
+                    particle.SpeedY += GravitationY;
                     particle.X += particle.SpeedX;
                     particle.Y += particle.SpeedY;
                 }
