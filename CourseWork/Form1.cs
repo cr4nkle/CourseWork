@@ -35,15 +35,31 @@ namespace CourseWork
 
         }
 
+        private void UpdateState()
+        {
+            foreach (var particle in particles)
+            {
+                var directionInRadians = particle.Direction / 180 * Math.PI;
+                particle.X += (float)(particle.Speed * Math.Cos(directionInRadians));
+                particle.Y -= (float)(particle.Speed * Math.Sin(directionInRadians));
+            }
+        }
+
+        private void Render(Graphics g)
+        {
+            foreach (var particle in particles)
+            {
+                particle.Draw(g);
+            }
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
+            UpdateState();
             using (var g = Graphics.FromImage(picDisplay.Image))
             {
                 g.Clear(Color.White);
-                foreach (var particle in particles)
-                {
-                    particle.Draw(g);
-                }
+                Render(g);
             }
 
             picDisplay.Invalidate();
