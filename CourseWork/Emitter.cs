@@ -28,16 +28,28 @@ namespace CourseWork
                     var speed = 1 + Particle.rand.Next(10);
 
                     particle.Life = 20 + Particle.rand.Next(100);
+
                     particle.X = MousePositionX;
                     particle.Y = MousePositionY;
+
                     particle.SpeedX = (float)(Math.Cos(direction / 180 * Math.PI) * speed);
                     particle.SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed);
+
                     particle.Radius = 2 + Particle.rand.Next(10);
                 }
                 else
                 {
+                    float gX = gravityPoints[0].X - particle.X;
+                    float gY = gravityPoints[0].Y - particle.Y;
+                    float r2 = gX * gX + gY * gY;
+                    float M = 100;
+
+                    particle.SpeedX += (gX) * M / r2;
+                    particle.SpeedY += (gY) * M / r2;
+
                     particle.SpeedX += GravitationX;
                     particle.SpeedY += GravitationY;
+
                     particle.X += particle.SpeedX;
                     particle.Y += particle.SpeedY;
                 }
@@ -48,10 +60,13 @@ namespace CourseWork
                 if (particles.Count < 500)
                 {
                     var particle = new ParticleColorful();
+
                     particle.FromColor = Color.Yellow;
                     particle.ToColor = Color.FromArgb(0, Color.Magenta);
+
                     particle.X = MousePositionX;
                     particle.Y = MousePositionY;
+
                     particles.Add(particle);
                 }
                 else
@@ -66,18 +81,7 @@ namespace CourseWork
             foreach (var particle in particles)
             {
                 particle.Draw(g);
-            }
-
-            foreach (var point in gravityPoints)
-            {
-                g.FillEllipse(
-                    new SolidBrush(Color.DarkGreen),
-                    point.X - 5,
-                    point.Y - 5,
-                    10,
-                    10
-                );
-            }
+            }            
         }
     }
 }
