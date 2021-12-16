@@ -12,8 +12,7 @@ namespace CourseWork
 {
     public partial class Form1 : Form
     {
-        Emitter emitter;
-
+        Emitter emitter ;
         public Form1()
         {
             InitializeComponent();
@@ -25,6 +24,7 @@ namespace CourseWork
                 Width = picDisplay.Width,
                 GravitationY = 0.25f
             };
+          
 
             /*emitter.impactPoints.Add(new GravityPoint
             {
@@ -57,6 +57,7 @@ namespace CourseWork
             {
                 g.Clear(Color.LightBlue);
                 emitter.Render(g);
+                round.Render(g);
             }
 
             picDisplay.Invalidate();

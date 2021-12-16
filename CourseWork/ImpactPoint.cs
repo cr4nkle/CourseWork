@@ -14,7 +14,7 @@ namespace CourseWork
 
         public abstract void ImpactParticle(Particle particle);
 
-        public void Render(Graphics g)
+        public virtual void Render(Graphics g)
         {
             g.FillEllipse(
                 new SolidBrush(Color.Purple),
@@ -24,35 +24,5 @@ namespace CourseWork
                 10
             );
         }
-    }
-
-    public class GravityPoint : ImpactPoint
-    {
-        public int Power = 100;
-
-        public override void ImpactParticle(Particle particle)
-        {
-            float gX = X - particle.X;
-            float gY = Y - particle.Y;
-            float r2 = (float)Math.Max(100, gX * gX + gY * gY);
-
-            particle.SpeedX += gX * Power / r2;
-            particle.SpeedY += gY * Power / r2;
-        }
-    }
-
-    public class AntiGravityPoint : ImpactPoint
-    {
-        public int Power = 100; 
-
-        public override void ImpactParticle(Particle particle)
-        {
-            float gX = X - particle.X;
-            float gY = Y - particle.Y;
-            float r2 = (float)Math.Max(100, gX * gX + gY * gY);
-
-            particle.SpeedX -= gX * Power / r2; 
-            particle.SpeedY -= gY * Power / r2; 
-        }
-    }
+    }   
 }
