@@ -27,7 +27,7 @@ namespace CourseWork
         public int RadiusMax = 10; 
         public int LifeMin = 20; 
         public int LifeMax = 100;
-        public int ParticlesPerTick = 10;
+        public int ParticlesPerTick = 20;
 
         public Color ColorFrom = Color.Yellow; 
         public Color ColorTo = Color.FromArgb(0, Color.Magenta); 
@@ -45,7 +45,7 @@ namespace CourseWork
 
                     if (particlesToCreate > 0)
                     {
-                        particlesToCreate -= 10; 
+                        particlesToCreate -= 1; 
                         ResetParticle(particle);
                     }
                 }

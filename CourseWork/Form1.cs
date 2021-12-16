@@ -12,7 +12,7 @@ namespace CourseWork
 {
     public partial class Form1 : Form
     {
-        Emitter emitter = new Emitter();
+        Emitter emitter;
 
         public Form1()
         {
@@ -20,13 +20,13 @@ namespace CourseWork
 
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
 
-            /*emitter = new TopEmitter
+            emitter = new TopEmitter
             {
                 Width = picDisplay.Width,
                 GravitationY = 0.25f
-            };*/
+            };
 
-            emitter.impactPoints.Add(new GravityPoint
+            /*emitter.impactPoints.Add(new GravityPoint
             {
                 X = (float)(picDisplay.Width * 0.25),
                 Y = picDisplay.Height / 2
@@ -42,7 +42,7 @@ namespace CourseWork
             {
                 X = (float)(picDisplay.Width * 0.75),
                 Y = picDisplay.Height / 2
-            });
+            });*/
         }
 
         private void Form1_Load(object sender, EventArgs e)
