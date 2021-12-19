@@ -11,6 +11,7 @@ namespace CourseWork
     {
         public float X; 
         public float Y;
+        public Color PaintColor;
         public float X1;
         public float Y1;
 
@@ -21,26 +22,27 @@ namespace CourseWork
             float gY = Y - particle.Y;
 
             double r = Math.Sqrt(gX * gX + gY * gY); // считаем расстояние от центра точки до центра частицы
-            if (r + particle.Radius < 100/2) // если частица оказалось внутри окружности
+            if (r + particle.Radius < 100/2 + X1/2) // если частица оказалось внутри окружности
             {
                 if (particle is ParticleColorful) {
                     var p = (particle as ParticleColorful);
-                    (particle as ParticleColorful).FromColor = Color.Blue;
-                    p.ToColor = Color.Blue;
+                    (particle as ParticleColorful).FromColor = PaintColor;
+                    p.ToColor = PaintColor;
                 }
                
             }
         }
 
-        public virtual void Render(Graphics g)
+        public void Render(Graphics g)
         {
             g.DrawEllipse(
-                new Pen(Color.Blue),
-                X-50,
-                Y-50,
+                new Pen(PaintColor),
+                X-50-X1/2,
+                Y-50-Y1/2,
                 X1+100,
                 Y1+100
             );
         }
-    }   
+    }     
+    
 }

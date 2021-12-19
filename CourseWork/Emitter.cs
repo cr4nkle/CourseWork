@@ -21,8 +21,8 @@ namespace CourseWork
         public int Y; 
         public int Direction = 0; 
         public int Spreading = 360; 
-        public int SpeedMin = 3; 
-        public int SpeedMax = 5; 
+        public int SpeedMin = 1; 
+        public int SpeedMax = 10; 
         public int RadiusMin = 2; 
         public int RadiusMax = 10; 
         public int LifeMin = 30; 

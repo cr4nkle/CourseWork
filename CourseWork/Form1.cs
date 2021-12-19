@@ -13,6 +13,7 @@ namespace CourseWork
     public partial class Form1 : Form
     {
         List<Emitter> emitters = new List<Emitter>();
+        
         Emitter emitter;
         ImpactPoint point;
         public Form1()
@@ -44,11 +45,27 @@ namespace CourseWork
 
             point = new ImpactPoint
             {
+                PaintColor = Color.Blue,
                 X = picDisplay.Width / 2,
                 Y = picDisplay.Height / 2,
+                X1 = 20,
+                Y1 = 20,
             };
+            emitter.impactPoints.Add(point);
 
-            emitter.impactPoints.Add(point);            
+            emitter.impactPoints.Add(new ImpactPoint
+            {
+                PaintColor = Color.Red,
+                X = (float)(picDisplay.Width * 0.25),
+                Y = picDisplay.Height / 2
+            });
+
+            emitter.impactPoints.Add(new ImpactPoint
+            {
+                PaintColor = Color.White,
+                X = (float)(picDisplay.Width * 0.75),
+                Y = picDisplay.Height / 2
+            });
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -78,6 +95,13 @@ namespace CourseWork
         {
             point.X1 = e.X;
             point.Y1 = e.Y;
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            point.X1 = trackBar1.Value;
+            point.Y1 = trackBar1.Value;
+
         }
     }
 }
