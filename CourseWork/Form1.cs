@@ -15,10 +15,11 @@ namespace CourseWork
         List<Emitter> emitters = new List<Emitter>();
         
         Emitter emitter;
-        ImpactPoint point;
+        PaintPoint point;
         public Form1()
         {
             InitializeComponent();
+            picDisplay.MouseWheel += pickDisplay_MouseWheel;
 
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
 
@@ -43,7 +44,7 @@ namespace CourseWork
                 GravitationY = 0.25f
             };
 
-            point = new ImpactPoint
+            point = new PaintPoint
             {
                 PaintColor = Color.Blue,
                 X = picDisplay.Width / 2,
@@ -53,26 +54,21 @@ namespace CourseWork
             };
             emitter.impactPoints.Add(point);
 
-            emitter.impactPoints.Add(new ImpactPoint
+            emitter.impactPoints.Add(new PaintPoint
             {
                 PaintColor = Color.Red,
                 X = (float)(picDisplay.Width * 0.25),
                 Y = picDisplay.Height / 2
             });
 
-            emitter.impactPoints.Add(new ImpactPoint
+            emitter.impactPoints.Add(new PaintPoint
             {
                 PaintColor = Color.White,
                 X = (float)(picDisplay.Width * 0.75),
                 Y = picDisplay.Height / 2
             });
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }        
-
+   
         private void timer1_Tick(object sender, EventArgs e)
         {
             emitter.UpdateState();
@@ -93,8 +89,8 @@ namespace CourseWork
 
         private void pickDisplay_MouseWheel(object sender, MouseEventArgs e)
         {
-            point.X1 = e.X;
-            point.Y1 = e.Y;
+            point.X1 +=1;
+            point.Y1 +=1;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)

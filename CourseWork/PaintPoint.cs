@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CourseWork
 {
-    public class ImpactPoint
+    public class PaintPoint
     {
         public float X; 
         public float Y;
@@ -17,20 +17,20 @@ namespace CourseWork
 
         public void ImpactParticle(Particle particle)
         {
-
             float gX = X - particle.X;
             float gY = Y - particle.Y;
 
-            double r = Math.Sqrt(gX * gX + gY * gY); // считаем расстояние от центра точки до центра частицы
-            if (r + particle.Radius < 100/2 + X1/2) // если частица оказалось внутри окружности
+            double r = Math.Sqrt(gX * gX + gY * gY); 
+            if(r + particle.Radius < 100/2 + X1/2)
             {
                 if (particle is ParticleColorful) {
                     var p = (particle as ParticleColorful);
-                    (particle as ParticleColorful).FromColor = PaintColor;
+                    p.FromColor = PaintColor;
                     p.ToColor = PaintColor;
                 }
-               
+
             }
+            
         }
 
         public void Render(Graphics g)

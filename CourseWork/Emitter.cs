@@ -10,12 +10,12 @@ namespace CourseWork
     public class Emitter
     {
         List<Particle> particles = new List<Particle>();
-        public List<ImpactPoint> impactPoints = new List<ImpactPoint>();
+        public List<PaintPoint> impactPoints = new List<PaintPoint>();
 
         public int MousePositionX = 0;
         public int MousePositionY = 0;
         public float GravitationX = 0;
-        public float GravitationY = 1;
+        public float GravitationY = 0;
         public int ParticlesCount = 600;
         public int X; 
         public int Y; 
@@ -99,7 +99,6 @@ namespace CourseWork
                 (particle as ParticleColorful).FromColor = ColorFrom;
                 p.ToColor = ColorTo;
             }
-            //particle.FromColor = ColorFrom;
            
             var direction = Direction
                 + (double)Particle.rand.Next(Spreading)
