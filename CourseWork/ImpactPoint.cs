@@ -7,21 +7,39 @@ using System.Threading.Tasks;
 
 namespace CourseWork
 {
-    public abstract class ImpactPoint
+    public class ImpactPoint
     {
         public float X; 
         public float Y;
+        public float X1;
+        public float Y1;
 
-        public abstract void ImpactParticle(Particle particle);
+        public void ImpactParticle(Particle particle)
+        {
+
+            float gX = X - particle.X;
+            float gY = Y - particle.Y;
+
+            double r = Math.Sqrt(gX * gX + gY * gY); // считаем расстояние от центра точки до центра частицы
+            if (r + particle.Radius < 100 / 2) // если частица оказалось внутри окружности
+            {
+                if (particle is ParticleColorful) {
+                    var p = (particle as ParticleColorful);
+                    (particle as ParticleColorful).FromColor = Color.Blue;
+                    p.ToColor = Color.Blue;
+                }
+               
+            }
+        }
 
         public virtual void Render(Graphics g)
         {
-            g.FillEllipse(
-                new SolidBrush(Color.Purple),
-                X - 5,
-                Y - 5,
-                10,
-                10
+            g.DrawEllipse(
+                new Pen(Color.Blue),
+                X-50,
+                Y-50,
+                X1+100,
+                Y1+100
             );
         }
     }   

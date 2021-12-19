@@ -12,7 +12,8 @@ namespace CourseWork
 {
     public partial class Form1 : Form
     {
-        Emitter emitter ;
+        Emitter emitter;
+        ImpactPoint point;
         public Form1()
         {
             InitializeComponent();
@@ -24,25 +25,14 @@ namespace CourseWork
                 Width = picDisplay.Width,
                 GravitationY = 0.25f
             };
-          
 
-            /*emitter.impactPoints.Add(new GravityPoint
-            {
-                X = (float)(picDisplay.Width * 0.25),
-                Y = picDisplay.Height / 2
-            });
-
-            emitter.impactPoints.Add(new AntiGravityPoint
+            point = new ImpactPoint
             {
                 X = picDisplay.Width / 2,
-                Y = picDisplay.Height / 2
-            });
+                Y = picDisplay.Height / 2,
+            };
 
-            emitter.impactPoints.Add(new GravityPoint
-            {
-                X = (float)(picDisplay.Width * 0.75),
-                Y = picDisplay.Height / 2
-            });*/
+            emitter.impactPoints.Add(point);            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -57,7 +47,6 @@ namespace CourseWork
             {
                 g.Clear(Color.LightBlue);
                 emitter.Render(g);
-                round.Render(g);
             }
 
             picDisplay.Invalidate();
@@ -65,8 +54,14 @@ namespace CourseWork
 
         private void pickDisplay_MouseMove(object sender, MouseEventArgs e)
         {
-            emitter.MousePositionX = e.X;
-            emitter.MousePositionY = e.Y;
+            point.X = e.X;
+            point.Y = e.Y;
+        }
+
+        private void pickDisplay_MouseWheel(object sender, MouseEventArgs e)
+        {
+            point.X1 = e.X;
+            point.Y1 = e.Y;
         }
     }
 }
