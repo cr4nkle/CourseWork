@@ -15,17 +15,17 @@ namespace CourseWork
         public int MousePositionX = 0;
         public int MousePositionY = 0;
         public float GravitationX = 0;
-        public float GravitationY = 0;
-        public int ParticlesCount = 500;
+        public float GravitationY = 1;
+        public int ParticlesCount = 600;
         public int X; 
         public int Y; 
         public int Direction = 0; 
         public int Spreading = 360; 
-        public int SpeedMin = 1; 
-        public int SpeedMax = 10; 
+        public int SpeedMin = 3; 
+        public int SpeedMax = 5; 
         public int RadiusMin = 2; 
         public int RadiusMax = 10; 
-        public int LifeMin = 20; 
+        public int LifeMin = 30; 
         public int LifeMax = 100;
         public int ParticlesPerTick = 20;
 
@@ -93,6 +93,14 @@ namespace CourseWork
             particle.X = MousePositionX;
             particle.Y = MousePositionY;
 
+            if (particle is ParticleColorful)
+            {
+                var p = (particle as ParticleColorful);
+                (particle as ParticleColorful).FromColor = ColorFrom;
+                p.ToColor = ColorTo;
+            }
+            //particle.FromColor = ColorFrom;
+           
             var direction = Direction
                 + (double)Particle.rand.Next(Spreading)
                 - Spreading / 2;

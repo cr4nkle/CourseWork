@@ -21,7 +21,7 @@ namespace CourseWork
             float gY = Y - particle.Y;
 
             double r = Math.Sqrt(gX * gX + gY * gY); // считаем расстояние от центра точки до центра частицы
-            if (r + particle.Radius < 100 / 2) // если частица оказалось внутри окружности
+            if (r + particle.Radius < 100/2) // если частица оказалось внутри окружности
             {
                 if (particle is ParticleColorful) {
                     var p = (particle as ParticleColorful);

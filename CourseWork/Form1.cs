@@ -12,6 +12,7 @@ namespace CourseWork
 {
     public partial class Form1 : Form
     {
+        List<Emitter> emitters = new List<Emitter>();
         Emitter emitter;
         ImpactPoint point;
         public Form1()
@@ -19,6 +20,21 @@ namespace CourseWork
             InitializeComponent();
 
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
+
+            /*this.emitter = new Emitter // создаю эмиттер и привязываю его к полю emitter
+            {
+                Direction = 0,
+                Spreading = 10,
+                SpeedMin = 10,
+                SpeedMax = 10,
+                ColorFrom = Color.Gold,
+                ColorTo = Color.FromArgb(0, Color.Red),
+                ParticlesPerTick = 10,
+                X = picDisplay.Width / 2,
+                Y = picDisplay.Height / 2,
+            };
+
+            emitters.Add(this.emitter);*/
 
             emitter = new TopEmitter
             {
