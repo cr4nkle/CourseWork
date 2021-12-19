@@ -10,7 +10,7 @@ namespace CourseWork
     public class Emitter
     {
         List<Particle> particles = new List<Particle>();
-        public List<PaintPoint> impactPoints = new List<PaintPoint>();
+        public List<Point> impactPoints = new List<Point>();
 
         public int MousePositionX = 0;
         public int MousePositionY = 0;
@@ -51,16 +51,16 @@ namespace CourseWork
                 }
                 else
                 {
+                    particle.X += particle.SpeedX;
+                    particle.Y += particle.SpeedY;
+
                     foreach (var point in impactPoints)
                     {
-                        point.ImpactParticle(particle);
+                        point.PaintParticle(particle);
                     }
                     
                     particle.SpeedX += GravitationX;
-                    particle.SpeedY += GravitationY;
-
-                    particle.X += particle.SpeedX;
-                    particle.Y += particle.SpeedY;
+                    particle.SpeedY += GravitationY;                    
                 }
             }
 

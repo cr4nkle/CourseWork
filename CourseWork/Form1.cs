@@ -16,6 +16,7 @@ namespace CourseWork
         
         Emitter emitter;
         PaintPoint point;
+        CountPoint countPoint;
         public Form1()
         {
             InitializeComponent();
@@ -43,8 +44,15 @@ namespace CourseWork
                 Width = picDisplay.Width,
                 GravitationY = 0.25f
             };
-
-            point = new PaintPoint
+            countPoint = new CountPoint
+            {
+                Color = Color.Orange,
+                X = picDisplay.Width / 2,
+                Y = picDisplay.Height / 2,
+            };
+            emitter.impactPoints.Add(countPoint);
+              
+            /*point = new PaintPoint
             {
                 PaintColor = Color.Blue,
                 X = picDisplay.Width / 2,
@@ -52,18 +60,18 @@ namespace CourseWork
                 X1 = 20,
                 Y1 = 20,
             };
-            emitter.impactPoints.Add(point);
+            emitter.impactPoints.Add(point);*/
 
             emitter.impactPoints.Add(new PaintPoint
             {
-                PaintColor = Color.Red,
+                Color = Color.Red,
                 X = (float)(picDisplay.Width * 0.25),
                 Y = picDisplay.Height / 2
             });
 
             emitter.impactPoints.Add(new PaintPoint
             {
-                PaintColor = Color.White,
+                Color = Color.White,
                 X = (float)(picDisplay.Width * 0.75),
                 Y = picDisplay.Height / 2
             });
@@ -83,8 +91,8 @@ namespace CourseWork
 
         private void pickDisplay_MouseMove(object sender, MouseEventArgs e)
         {
-            point.X = e.X;
-            point.Y = e.Y;
+            countPoint.X = e.X;
+            countPoint.Y = e.Y;
         }
 
         private void pickDisplay_MouseWheel(object sender, MouseEventArgs e)
@@ -95,8 +103,8 @@ namespace CourseWork
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            point.X1 = trackBar1.Value;
-            point.Y1 = trackBar1.Value;
+            //point.X1 = trackBar1.Value;
+            //point.Y1 = trackBar1.Value;
 
         }
     }
