@@ -15,7 +15,7 @@ namespace CourseWork
         List<Emitter> emitters = new List<Emitter>();
         
         Emitter emitter;
-        PaintPoint point;
+        PaintPoint point, redPoint, blackPoint, whitePoint;
         CountPoint countPoint;
         public Form1()
         {
@@ -44,37 +44,47 @@ namespace CourseWork
                 Width = picDisplay.Width,
                 GravitationY = 0.25f
             };
-            countPoint = new CountPoint
+            /*countPoint = new CountPoint
             {
                 Color = Color.Orange,
                 X = picDisplay.Width / 2,
                 Y = picDisplay.Height / 2,
             };
-            emitter.impactPoints.Add(countPoint);
+            emitter.impactPoints.Add(countPoint);*/
               
-            /*point = new PaintPoint
+            point = new PaintPoint
             {
-                PaintColor = Color.Blue,
+                Color = Color.Blue,
                 X = picDisplay.Width / 2,
                 Y = picDisplay.Height / 2,
                 X1 = 20,
                 Y1 = 20,
             };
-            emitter.impactPoints.Add(point);*/
 
-            emitter.impactPoints.Add(new PaintPoint
+            redPoint = new PaintPoint
             {
                 Color = Color.Red,
                 X = (float)(picDisplay.Width * 0.25),
                 Y = picDisplay.Height / 2
-            });
+            };
 
-            emitter.impactPoints.Add(new PaintPoint
+            whitePoint = new PaintPoint
             {
                 Color = Color.White,
                 X = (float)(picDisplay.Width * 0.75),
                 Y = picDisplay.Height / 2
-            });
+            };
+
+            blackPoint = new PaintPoint
+            {
+                Color = Color.Black,
+                X = (float)(picDisplay.Width * 0.5),
+                Y = picDisplay.Height / 2
+            };
+            emitter.impactPoints.Add(point);
+            emitter.impactPoints.Add(redPoint);
+            emitter.impactPoints.Add(whitePoint);
+            emitter.impactPoints.Add(blackPoint);
         }
    
         private void timer1_Tick(object sender, EventArgs e)
@@ -91,20 +101,24 @@ namespace CourseWork
 
         private void pickDisplay_MouseMove(object sender, MouseEventArgs e)
         {
-            countPoint.X = e.X;
-            countPoint.Y = e.Y;
+            point.X = e.X;
+            point.Y = e.Y;
         }
 
         private void pickDisplay_MouseWheel(object sender, MouseEventArgs e)
         {
-            point.X1 +=1;
-            point.Y1 +=1;
+           //point.X1 =e.X;
+           //point.Y1 =e.Y;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            //point.X1 = trackBar1.Value;
-            //point.Y1 = trackBar1.Value;
+            redPoint.X1 = trackBar1.Value;
+            redPoint.Y1 = trackBar1.Value;
+            whitePoint.X1 = trackBar1.Value;
+            whitePoint.Y1 = trackBar1.Value;
+            blackPoint.X1 = trackBar1.Value;
+            blackPoint.Y1 = trackBar1.Value;
 
         }
     }

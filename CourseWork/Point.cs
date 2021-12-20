@@ -63,7 +63,7 @@ namespace CourseWork
             float gY = Y - particle.Y;
 
             double r = Math.Sqrt(gX * gX + gY * gY);
-            if (r + particle.Radius < 100 / 2 )
+            if (r + particle.Radius < 100 / 2)
             {
                 if (particle is ParticleColorful)
                 {
