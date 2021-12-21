@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -96,6 +97,7 @@ namespace CourseWork
     public class EnterPoint : Point
     {
         public ExitPoint exitPoint;
+        public int Angle = 0;
         public override void PaintParticle(Particle particle)
         {
             float gX = X - particle.X;
@@ -107,8 +109,17 @@ namespace CourseWork
                 if (particle is ParticleColorful)
                 {
                     var p = (particle as ParticleColorful);
-                    p.X = exitPoint.X;
-                    p.Y = exitPoint.Y;
+
+                    var m = new Matrix();
+                    m.Rotate(Angle);
+
+                    var points = new[] { new PointF(gX, gY) ,  new PointF(p.SpeedX, p.SpeedY)};
+                    m.TransformPoints(points);
+
+                    p.X = exitPoint.X - points[0].X;
+                    p.Y = exitPoint.Y - points[0].Y;
+                    p.SpeedX = points[1].X;
+                    p.SpeedY = points[1].Y;
                 }
 
             }
@@ -128,6 +139,8 @@ namespace CourseWork
 
     public class ExitPoint : Point
     {
+        
+
         public override void PaintParticle(Particle particle)
         {
             float gX = X - particle.X;
@@ -138,9 +151,9 @@ namespace CourseWork
             {
                 if (particle is ParticleColorful)
                 {
-                   // var p = (particle as ParticleColorful);
-                   // p.FromColor = Color;
-                    //p.ToColor = Color;
+                    var p = (particle as ParticleColorful);
+                    
+
                 }
 
             }

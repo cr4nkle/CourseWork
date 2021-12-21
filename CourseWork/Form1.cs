@@ -42,7 +42,7 @@ namespace CourseWork
 
             emitters.Add(this.emitter);
 
-            /* emitter = new TopEmitter
+             /*emitter = new TopEmitter // задание с перекрашиванием снега
              {
                  Width = picDisplay.Width,
                  GravitationY = 0.25f
@@ -55,11 +55,11 @@ namespace CourseWork
             };
             emitter.impactPoints.Add(countPoint);*/
 
-            /*point = new PaintPoint
+           point = new PaintPoint
             {
                 Color = Color.Blue,
                 X = picDisplay.Width / 2,
-                Y = picDisplay.Height / 2,
+                Y = picDisplay.Height / 2 + 120,
                 X1 = 20,
                 Y1 = 20,
             };
@@ -67,13 +67,13 @@ namespace CourseWork
             redPoint = new PaintPoint
             {
                Color = Color.Red,
-                X = (float)(picDisplay.Width * 0.25),
-                Y = picDisplay.Height / 2
+                X = picDisplay.Width / 2,
+                Y = (float)(picDisplay.Height * 0.25)
             };
 
             whitePoint = new PaintPoint
             {
-                Color = Color.White,
+                Color = Color.Brown,
                 X = (float)(picDisplay.Width * 0.75),
                 Y = picDisplay.Height / 2
             };
@@ -86,9 +86,9 @@ namespace CourseWork
             };
             emitter.impactPoints.Add(point);
             emitter.impactPoints.Add(redPoint);
-            emitter.impactPoints.Add(whitePoint);
-            emitter.impactPoints.Add(blackPoint);*/
-            exp = new ExitPoint
+            emitter.impactPoints.Add(whitePoint);// конец перекрашивания
+            emitter.impactPoints.Add(blackPoint);
+            exp = new ExitPoint//телепорт
             {
                 Color = Color.Blue,
                 X = (float)(picDisplay.Width * 0.5),
@@ -103,7 +103,7 @@ namespace CourseWork
             };
             
             emitter.impactPoints.Add(ep);
-            emitter.impactPoints.Add(exp);
+            emitter.impactPoints.Add(exp);// конец телепорта
         }
    
         private void timer1_Tick(object sender, EventArgs e)
@@ -120,24 +120,27 @@ namespace CourseWork
 
         private void pickDisplay_MouseMove(object sender, MouseEventArgs e)
         {
+            exp.X = e.X;
+            exp.Y = e.Y;
             //point.X = e.X;
             //point.Y = e.Y;
         }
 
         private void pickDisplay_MouseWheel(object sender, MouseEventArgs e)
         {
-           //point.X1 =e.X;
-           //point.Y1 =e.Y;
+           point.X1 +=1;
+           point.Y1 +=1;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            redPoint.X1 = trackBar1.Value;
-            redPoint.Y1 = trackBar1.Value;
-            whitePoint.X1 = trackBar1.Value;
-            whitePoint.Y1 = trackBar1.Value;
-            blackPoint.X1 = trackBar1.Value;
-            blackPoint.Y1 = trackBar1.Value;
+            ep.Angle = trackBar1.Value;
+            //redPoint.X1 = trackBar1.Value;
+            //redPoint.Y1 = trackBar1.Value;
+            //whitePoint.X1 = trackBar1.Value;
+            //whitePoint.Y1 = trackBar1.Value;
+            //blackPoint.X1 = trackBar1.Value;
+            //blackPoint.Y1 = trackBar1.Value;
 
         }
     }

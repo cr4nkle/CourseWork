@@ -55,9 +55,9 @@ namespace CourseWork
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(12, 666);
-            this.trackBar1.Maximum = 100;
+            this.trackBar1.Maximum = 360;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(316, 56);
+            this.trackBar1.Size = new System.Drawing.Size(441, 56);
             this.trackBar1.TabIndex = 1;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
