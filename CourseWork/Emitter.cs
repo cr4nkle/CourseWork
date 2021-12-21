@@ -16,7 +16,7 @@ namespace CourseWork
         public int MousePositionY = 0;
         public float GravitationX = 0;
         public float GravitationY = 0;
-        public int ParticlesCount = 600;
+        public int ParticlesCount = 500;
         public int X; 
         public int Y; 
         public int Direction = 0; 
@@ -56,7 +56,7 @@ namespace CourseWork
 
                     foreach (var point in impactPoints)
                     {
-                        point.PaintParticle(particle);
+                        point.ImpactParticle(particle);
                     }
                     
                     particle.SpeedX += GravitationX;

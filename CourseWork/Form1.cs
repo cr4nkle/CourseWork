@@ -15,8 +15,7 @@ namespace CourseWork
         List<Emitter> emitters = new List<Emitter>();
         
         Emitter emitter;
-        PaintPoint point, redPoint, blackPoint, whitePoint;
-        CountPoint countPoint;
+        PaintPoint redPoint, blackPoint, whitePoint;
         EnterPoint ep;
         ExitPoint exp;
         public Form1()
@@ -37,54 +36,38 @@ namespace CourseWork
                 ParticlesPerTick = 30,
                 X = 0,
                 Y = picDisplay.Height / 2,
-                //GravitationY = 0.25f,
+                
             };
 
             emitters.Add(this.emitter);
 
-             /*emitter = new TopEmitter // задание с перекрашиванием снега
-             {
-                 Width = picDisplay.Width,
-                 GravitationY = 0.25f
-             };*/
-            /*countPoint = new CountPoint
-            {
-                Color = Color.Orange,
-                X = picDisplay.Width / 2,
-                Y = picDisplay.Height / 2,
-            };
-            emitter.impactPoints.Add(countPoint);*/
-
-           point = new PaintPoint
-            {
-                Color = Color.Blue,
-                X = picDisplay.Width / 2,
-                Y = picDisplay.Height / 2 + 120,
-                X1 = 20,
-                Y1 = 20,
-            };
-
             redPoint = new PaintPoint
             {
-               Color = Color.Red,
+                Color = Color.Red,
                 X = picDisplay.Width / 2,
-                Y = (float)(picDisplay.Height * 0.25)
+                Y = (float)(picDisplay.Height * 0.25),
+                X1 = 100,
+                Y1 = 100
             };
 
             whitePoint = new PaintPoint
             {
-                Color = Color.Brown,
+                Color = Color.White,
                 X = (float)(picDisplay.Width * 0.75),
-                Y = picDisplay.Height / 2
+                Y = picDisplay.Height / 2,
+                X1 = 100,
+                Y1 = 100
             };
 
             blackPoint = new PaintPoint
             {
                 Color = Color.Black,
                 X = (float)(picDisplay.Width * 0.5),
-                Y = picDisplay.Height / 2
+                Y = picDisplay.Height / 2,
+                X1 = 100,
+                Y1 = 100
             };
-            emitter.impactPoints.Add(point);
+            
             emitter.impactPoints.Add(redPoint);
             emitter.impactPoints.Add(whitePoint);// конец перекрашивания
             emitter.impactPoints.Add(blackPoint);
@@ -92,14 +75,18 @@ namespace CourseWork
             {
                 Color = Color.Blue,
                 X = (float)(picDisplay.Width * 0.5),
-                Y = picDisplay.Height / 2
+                Y = picDisplay.Height / 2,
+                X1 = 100,
+                Y1 = 100
             };
             ep = new EnterPoint
             {
                 exitPoint = exp,
                 Color = Color.Purple,
                 X = (float)(picDisplay.Width * 0.25),
-                Y = picDisplay.Height / 2
+                Y = picDisplay.Height / 2,
+                X1 = 100,
+                Y1 = 100
             };
             
             emitter.impactPoints.Add(ep);
@@ -128,8 +115,7 @@ namespace CourseWork
 
         private void pickDisplay_MouseWheel(object sender, MouseEventArgs e)
         {
-           point.X1 +=1;
-           point.Y1 +=1;
+
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)

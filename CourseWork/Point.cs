@@ -10,26 +10,34 @@ namespace CourseWork
 {
     public abstract class Point // добавить наследование от одного класса
     {
-        public float X; 
-        public float Y;
-        public Color Color;        
+        public float X =0 ; 
+        public float Y = 0;
+        public Color Color;
+        public float X1 = 100;
+        public float Y1 = 100;
 
-        public abstract void PaintParticle(Particle particle);
-        public abstract void Render(Graphics g);
+        public abstract void ImpactParticle(Particle particle);
+        public virtual void Render(Graphics g)
+        {
+            g.DrawEllipse(
+                new Pen(Color),
+                X - X1 / 2,
+                Y - Y1 / 2,
+                X1,
+                Y1
+            );
+        }
     }
 
     public class PaintPoint:Point
     {
-        public float X1;
-        public float Y1;
-
-        public override void PaintParticle(Particle particle)
+        public override void ImpactParticle(Particle particle)
         {
             float gX = X - particle.X;
             float gY = Y - particle.Y;
 
             double r = Math.Sqrt(gX * gX + gY * gY);
-            if (r + particle.Radius < 100 / 2 + X1 / 2)
+            if (r + particle.Radius < X1 / 2)
             {
                 if (particle is ParticleColorful)
                 {
@@ -44,61 +52,15 @@ namespace CourseWork
 
         public override void Render(Graphics g)
         {
-            g.DrawEllipse(
-                new Pen(Color),
-                X - 50 - X1 / 2,
-                Y - 50 - Y1 / 2,
-                X1 + 100,
-                Y1 + 100
-            );
+            base.Render(g);
         }
-    }
-
-
-    public class CountPoint:Point
-    {
-        private int count;
-        public override void PaintParticle(Particle particle)
-        {
-            float gX = X - particle.X;
-            float gY = Y - particle.Y;
-
-            double r = Math.Sqrt(gX * gX + gY * gY);
-            if (r + particle.Radius < 100 / 2)
-            {
-                if (particle is ParticleColorful)
-                {
-                    count++;                    
-                }
-
-            }
-        }
-
-        public override void Render(Graphics g)
-        {
-            g.DrawEllipse(
-                new Pen(Color),
-                X - 50,
-                Y - 50,
-                100,
-                100
-            );
-
-            g.DrawString(
-            $"{count}", 
-            new Font("Verdana", 10), 
-            new SolidBrush(Color.Black),
-            X, 
-            Y
-        );
-        }
-    }
+    }    
 
     public class EnterPoint : Point
     {
         public ExitPoint exitPoint;
         public int Angle = 0;
-        public override void PaintParticle(Particle particle)
+        public override void ImpactParticle(Particle particle)
         {
             float gX = X - particle.X;
             float gY = Y - particle.Y;
@@ -127,46 +89,37 @@ namespace CourseWork
 
         public override void Render(Graphics g)
         {
-            g.DrawEllipse(
-               new Pen(Color),
-               X - 50,
-               Y - 50,
-               100,
-               100
-           );
-        }
+            base.Render(g);
+
+            g.DrawString(
+            $"Вход",
+            new Font("Verdana", 10),
+            new SolidBrush(Color.Black),
+            X ,
+            Y
+            );
+        }        
     }
 
     public class ExitPoint : Point
     {
         
 
-        public override void PaintParticle(Particle particle)
+        public override void ImpactParticle(Particle particle)
         {
-            float gX = X - particle.X;
-            float gY = Y - particle.Y;
-
-            double r = Math.Sqrt(gX * gX + gY * gY);
-            if (r + particle.Radius < 100 / 2)
-            {
-                if (particle is ParticleColorful)
-                {
-                    var p = (particle as ParticleColorful);
-                    
-
-                }
-
-            }
+            
         }
 
         public override void Render(Graphics g)
         {
-            g.DrawEllipse(
-                new Pen(Color),
-                X - 50,
-                Y - 50,
-                100,
-                100
+            base.Render(g);
+
+            g.DrawString(
+            $"Выход",
+            new Font("Verdana", 10),
+            new SolidBrush(Color.Black),
+            X,
+            Y
             );
         }
     }
