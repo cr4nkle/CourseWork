@@ -18,7 +18,20 @@ namespace CourseWork
         PaintPoint redPoint, blackPoint, whitePoint;
         EnterPoint ep;
         ExitPoint exp;
-        
+        Random rnd;
+
+        Dictionary<int, Color> colorList = new Dictionary<int, Color> { 
+            [0] = Color.Blue,
+            [1] = Color.Red,
+            [2] = Color.White,
+            [3] = Color.Purple,
+            [4] = Color.Black,
+            [5] = Color.Pink,
+            [6] = Color.Yellow,
+            [7] = Color.Green,
+            [8] = Color.Orange,
+            [9] = Color.Azure,
+        };
         public Form1()
         {
             InitializeComponent();
@@ -29,7 +42,7 @@ namespace CourseWork
             this.emitter = new Emitter 
             {
                 Direction = 0,
-                Spreading = 10,
+                Spreading = 0,
                 SpeedMin = 10,
                 SpeedMax = 10,
                 ColorFrom = Color.Gold,
@@ -73,7 +86,7 @@ namespace CourseWork
             emitter.impactPoints.Add(whitePoint);
             emitter.impactPoints.Add(blackPoint);
 
-            exp = new ExitPoint//телепорт
+            exp = new ExitPoint
             {
                 Color = Color.Blue,
                 X = (float)(picDisplay.Width * 0.5),
@@ -116,7 +129,10 @@ namespace CourseWork
 
         private void button1_Click(object sender, EventArgs e)
         {
-            redPoint.Color = Color.Yellow;
+            rnd = new Random();
+            redPoint.Color = colorList[rnd.Next(0,9)];
+            whitePoint.Color = colorList[rnd.Next(0, 9)];
+            blackPoint.Color = colorList[rnd.Next(0, 9)];
         }
 
         private void pickDisplay_MouseWheel(object sender, MouseEventArgs e)
