@@ -35,8 +35,11 @@ namespace CourseWork
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.button1 = new System.Windows.Forms.Button();
             this.lblAngle = new System.Windows.Forms.Label();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.lblSpr = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // picDisplay
@@ -82,11 +85,31 @@ namespace CourseWork
             this.lblAngle.TabIndex = 3;
             this.lblAngle.Text = "Изменение угла";
             // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(934, 702);
+            this.trackBar2.Maximum = 90;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(436, 56);
+            this.trackBar2.TabIndex = 4;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            // 
+            // lblSpr
+            // 
+            this.lblSpr.AutoSize = true;
+            this.lblSpr.Location = new System.Drawing.Point(947, 682);
+            this.lblSpr.Name = "lblSpr";
+            this.lblSpr.Size = new System.Drawing.Size(180, 17);
+            this.lblSpr.TabIndex = 5;
+            this.lblSpr.Text = "Изменение угла разброса";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1414, 770);
+            this.Controls.Add(this.lblSpr);
+            this.Controls.Add(this.trackBar2);
             this.Controls.Add(this.lblAngle);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.trackBar1);
@@ -95,6 +118,7 @@ namespace CourseWork
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,6 +131,8 @@ namespace CourseWork
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblAngle;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.Label lblSpr;
     }
 }
 

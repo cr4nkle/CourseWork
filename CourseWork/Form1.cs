@@ -30,7 +30,7 @@ namespace CourseWork
             [6] = Color.Yellow,
             [7] = Color.Green,
             [8] = Color.Orange,
-            [9] = Color.Azure,
+            [9] = Color.DarkGray,
         };
         public Form1()
         {
@@ -39,7 +39,7 @@ namespace CourseWork
 
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
 
-            this.emitter = new Emitter 
+            emitter = new Emitter 
             {
                 Direction = 0,
                 Spreading = 0,
@@ -53,7 +53,7 @@ namespace CourseWork
                 
             };
 
-            emitters.Add(this.emitter);
+            emitters.Add(emitter);
 
             redPoint = new PaintPoint
             {
@@ -130,14 +130,20 @@ namespace CourseWork
         private void button1_Click(object sender, EventArgs e)
         {
             rnd = new Random();
-            redPoint.Color = colorList[rnd.Next(0,9)];
-            whitePoint.Color = colorList[rnd.Next(0, 9)];
-            blackPoint.Color = colorList[rnd.Next(0, 9)];
+            redPoint.Color = colorList[rnd.Next(0,10)];
+            whitePoint.Color = colorList[rnd.Next(0, 10)];
+            blackPoint.Color = colorList[rnd.Next(0, 10)];
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            lblSpr.Text = $"Изменение угла разброса {trackBar2.Value}°";
+            emitter.Spreading = trackBar2.Value;
         }
 
         private void pickDisplay_MouseWheel(object sender, MouseEventArgs e)
         {
-
+            
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
