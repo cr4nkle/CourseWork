@@ -143,7 +143,10 @@ namespace CourseWork
 
         private void pickDisplay_MouseWheel(object sender, MouseEventArgs e)
         {
-            
+            rnd = new Random();
+            redPoint.Color = colorList[rnd.Next(0, 10)];
+            whitePoint.Color = colorList[rnd.Next(0, 10)];
+            blackPoint.Color = colorList[rnd.Next(0, 10)];
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
