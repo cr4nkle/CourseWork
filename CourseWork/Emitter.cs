@@ -90,8 +90,8 @@ namespace CourseWork
         {
             particle.Life = Particle.rand.Next(LifeMin, LifeMax);
 
-            particle.X = MousePositionX;
-            particle.Y = MousePositionY;
+            particle.X = X;
+            particle.Y = Y;
 
             if (particle is ParticleColorful)
             {

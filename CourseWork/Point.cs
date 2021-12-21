@@ -92,4 +92,69 @@ namespace CourseWork
         );
         }
     }
+
+    public class EnterPoint : Point
+    {
+        public ExitPoint exitPoint;
+        public override void PaintParticle(Particle particle)
+        {
+            float gX = X - particle.X;
+            float gY = Y - particle.Y;
+            
+            double r = Math.Sqrt(gX * gX + gY * gY);
+            if (r + particle.Radius < 100 / 2)
+            {
+                if (particle is ParticleColorful)
+                {
+                    var p = (particle as ParticleColorful);
+                    p.X = exitPoint.X;
+                    p.Y = exitPoint.Y;
+                }
+
+            }
+        }
+
+        public override void Render(Graphics g)
+        {
+            g.DrawEllipse(
+               new Pen(Color),
+               X - 50,
+               Y - 50,
+               100,
+               100
+           );
+        }
+    }
+
+    public class ExitPoint : Point
+    {
+        public override void PaintParticle(Particle particle)
+        {
+            float gX = X - particle.X;
+            float gY = Y - particle.Y;
+
+            double r = Math.Sqrt(gX * gX + gY * gY);
+            if (r + particle.Radius < 100 / 2)
+            {
+                if (particle is ParticleColorful)
+                {
+                   // var p = (particle as ParticleColorful);
+                   // p.FromColor = Color;
+                    //p.ToColor = Color;
+                }
+
+            }
+        }
+
+        public override void Render(Graphics g)
+        {
+            g.DrawEllipse(
+                new Pen(Color),
+                X - 50,
+                Y - 50,
+                100,
+                100
+            );
+        }
+    }
 }
