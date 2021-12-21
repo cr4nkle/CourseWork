@@ -34,6 +34,7 @@ namespace CourseWork
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblAngle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -55,7 +56,7 @@ namespace CourseWork
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(12, 666);
+            this.trackBar1.Location = new System.Drawing.Point(12, 702);
             this.trackBar1.Maximum = 360;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(441, 56);
@@ -72,11 +73,21 @@ namespace CourseWork
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lblAngle
+            // 
+            this.lblAngle.AutoSize = true;
+            this.lblAngle.Location = new System.Drawing.Point(35, 682);
+            this.lblAngle.Name = "lblAngle";
+            this.lblAngle.Size = new System.Drawing.Size(114, 17);
+            this.lblAngle.TabIndex = 3;
+            this.lblAngle.Text = "Изменение угла";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1414, 734);
+            this.ClientSize = new System.Drawing.Size(1414, 770);
+            this.Controls.Add(this.lblAngle);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.picDisplay);
@@ -95,6 +106,7 @@ namespace CourseWork
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblAngle;
     }
 }
 

@@ -45,8 +45,8 @@ namespace CourseWork
             redPoint = new PaintPoint
             {
                 Color = Color.Red,
-                X = picDisplay.Width / 2,
-                Y = (float)(picDisplay.Height * 0.25),
+                X = (float)(picDisplay.Width * 0.6),
+                Y = (float)(picDisplay.Height * 0.75),
                 X1 = 100,
                 Y1 = 100
             };
@@ -54,8 +54,8 @@ namespace CourseWork
             whitePoint = new PaintPoint
             {
                 Color = Color.White,
-                X = (float)(picDisplay.Width * 0.75),
-                Y = picDisplay.Height / 2,
+                X = (float)(picDisplay.Width * 0.6),
+                Y = (float)(picDisplay.Height * 0.5),
                 X1 = 100,
                 Y1 = 100
             };
@@ -63,8 +63,8 @@ namespace CourseWork
             blackPoint = new PaintPoint
             {
                 Color = Color.Black,
-                X = (float)(picDisplay.Width * 0.5),
-                Y = picDisplay.Height / 2,
+                X = (float)(picDisplay.Width * 0.6),
+                Y = (float)(picDisplay.Height * 0.25),
                 X1 = 100,
                 Y1 = 100
             };
@@ -126,13 +126,8 @@ namespace CourseWork
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            ep.Angle = trackBar1.Value;
-            //redPoint.X1 = trackBar1.Value;
-            //redPoint.Y1 = trackBar1.Value;
-            //whitePoint.X1 = trackBar1.Value;
-            //whitePoint.Y1 = trackBar1.Value;
-            //blackPoint.X1 = trackBar1.Value;
-            //blackPoint.Y1 = trackBar1.Value;
+            lblAngle.Text = $"Изменение угла на {trackBar1.Value}°";
+            ep.Angle = trackBar1.Value;          
 
         }
     }
