@@ -18,6 +18,7 @@ namespace CourseWork
         PaintPoint redPoint, blackPoint, whitePoint;
         EnterPoint ep;
         ExitPoint exp;
+        
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace CourseWork
 
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
 
-            this.emitter = new Emitter // создаю эмиттер и привязываю его к полю emitter
+            this.emitter = new Emitter 
             {
                 Direction = 0,
                 Spreading = 10,
@@ -69,8 +70,9 @@ namespace CourseWork
             };
             
             emitter.impactPoints.Add(redPoint);
-            emitter.impactPoints.Add(whitePoint);// конец перекрашивания
+            emitter.impactPoints.Add(whitePoint);
             emitter.impactPoints.Add(blackPoint);
+
             exp = new ExitPoint//телепорт
             {
                 Color = Color.Blue,
@@ -79,6 +81,7 @@ namespace CourseWork
                 X1 = 100,
                 Y1 = 100
             };
+
             ep = new EnterPoint
             {
                 exitPoint = exp,
@@ -90,7 +93,7 @@ namespace CourseWork
             };
             
             emitter.impactPoints.Add(ep);
-            emitter.impactPoints.Add(exp);// конец телепорта
+            emitter.impactPoints.Add(exp);
         }
    
         private void timer1_Tick(object sender, EventArgs e)
@@ -108,9 +111,12 @@ namespace CourseWork
         private void pickDisplay_MouseMove(object sender, MouseEventArgs e)
         {
             exp.X = e.X;
-            exp.Y = e.Y;
-            //point.X = e.X;
-            //point.Y = e.Y;
+            exp.Y = e.Y;            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            redPoint.Color = Color.Yellow;
         }
 
         private void pickDisplay_MouseWheel(object sender, MouseEventArgs e)
